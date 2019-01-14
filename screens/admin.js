@@ -10,7 +10,7 @@ import {
   TextInput,
   AsyncStorage
 } from "react-native";
-import Home from "../components/map/home";
+import Admin from "../components/admin/admin";
 import firebase from "firebase";
 
 export default class SignInScreen extends React.Component {
@@ -61,7 +61,7 @@ export default class SignInScreen extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <StatusBar barStyle="light-content" />
-        <Home />
+        <Admin />
       </View>
     );
   }

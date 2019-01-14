@@ -10,7 +10,7 @@ import {
   AsyncStorage
 } from "react-native";
 
-export default class Home extends Component {
+export default class Admin extends Component {
   componentDidMount() {}
   render() {
     return (
@@ -22,7 +22,7 @@ export default class Home extends Component {
           backgroundColor: "#fff"
         }}
       >
-        <Text>here is the map screen</Text>
+        <Text>here is the Admin page</Text>
       </View>
     );
   }

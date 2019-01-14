@@ -27,7 +27,7 @@ export default class SignUpScreen extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <Header nav={this.props.navigation} />
-        <SignUpBody />
+        <SignUpBody nav={this.props.navigation} />
       </View>
     );
   }

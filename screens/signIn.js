@@ -27,7 +27,7 @@ export default class SignInScreen extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <Header nav={this.props.navigation} />
-        <SignInBody />
+        <SignInBody nav={this.props.navigation} />
       </View>
     );
   }

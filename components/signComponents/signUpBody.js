@@ -10,6 +10,8 @@ import {
   TextInput
 } from "react-native";
 
+import firebase from "firebase";
+
 export default class SignInBody extends Component {
   constructor() {
     super();
@@ -19,6 +21,38 @@ export default class SignInBody extends Component {
       name: "",
       phoneNumber: ""
     };
+  }
+  determineUserType() {
+    firebase
+      .auth()
+      .currentUser.getIdTokenResult()
+      .then(idTokenResult => {
+        if (!!idTokenResult.claims.admin) {
+          // Show admin UI.
+          //  showAdminUI();
+          console.log("admin");
+        } else {
+          // Show regular user UI.
+          //  showRegularUI();
+          this.props.nav.navigate("Home");
+          console.log("regular");
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+  determineUserLoggedIn() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        // User is signed in.
+        console.log("logged in");
+        this.determineUserType();
+      } else {
+        // No user is signed in.
+        console.log("not signed");
+      }
+    });
   }
   render() {
     return (
@@ -111,6 +145,19 @@ export default class SignInBody extends Component {
             };
             //TODO: send this to firebase
             console.log(`${toFirebase}`);
+            firebase
+              .auth()
+              .createUserWithEmailAndPassword(
+                toFirebase.email,
+                toFirebase.password
+              )
+              .then(cred => {
+                // console.log(cred.user.uid);
+                this.determineUserLoggedIn();
+              })
+              .catch(err => {
+                console.log(err);
+              });
           }}
         />
       </View>
