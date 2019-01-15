@@ -8,10 +8,15 @@ firebase
     description:
       "Lorem ipsum dolor sit amet, id eam quod gubergren elaboraret. Eu decore iudicabit neglegentur usu. Eum at nostrum blandit. Duis quando noster eam ea. Probo pertinacia adipiscing usu et, ei essent concludaturque eos.",
     name: "Jazz Barber",
-    queue: {},
-    rating: 4
+    queue: [
+      { name: "ramy" },
+      { name: "ramy" },
+      { name: "ramy" },
+      { name: "ramy" }
+    ],
+    rating: 4,
+    uid: "j3Vw8GADG9NHHohwOBsvSHuwF2H3"
   });
-
 
 
 

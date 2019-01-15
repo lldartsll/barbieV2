@@ -18,12 +18,15 @@ class Map extends Component {
         coordinate={marker.coords}
         onPress={() =>
           this.props.navigation.navigate("Details", {
+            info: marker,
             title: marker.name,
             rating: marker.rating,
             description: marker.description
           })
         }
-      />
+      >
+        {console.log(marker)}
+      </Marker>
     ));
   }
   componentDidMount() {}

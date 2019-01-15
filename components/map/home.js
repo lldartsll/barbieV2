@@ -26,27 +26,18 @@ var config1 = {
   messagingSenderId: "694028601657"
 };
 firebase.initializeApp(config1);
-
 const deltas = {
   latitudeDelta: 20,
   longitudeDelta: 20
 };
+
 export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
       dbs: null,
       region: null,
-      barberShops: [
-        {
-          name: "mmmm",
-          rating: 0,
-          coords: {
-            latitude: 34.35479,
-            longitude: 41.960243
-          }
-        }
-      ]
+      barberShops: []
     };
   }
   componentWillMount() {

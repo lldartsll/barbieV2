@@ -18,7 +18,7 @@ const AppNavigator = createStackNavigator(
     Details: BarberDetails
   },
   {
-    initialRouteName: "Home"
+    initialRouteName: "Admin"
   }
 );
 

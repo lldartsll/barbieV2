@@ -11,6 +11,10 @@ import StarRating from "../components/map/StarRating";
 import firebase from "firebase";
 
 export default class BarberDetails extends Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
   static navigationOptions = ({ navigation }) => {
     return {
       headerTitle: (
@@ -21,8 +25,36 @@ export default class BarberDetails extends Component {
       }
     };
   };
+
+  _book(barberInfo) {
+    barberInfo.queue.push({ name: "mukla" });
+    firebase
+      .database()
+      .ref()
+      .child("Barbers")
+      .child(barberInfo.uid)
+      .set({
+        coords: barberInfo.coords,
+        description: barberInfo.description,
+        name: barberInfo.name,
+        queue: barberInfo.queue,
+        rating: barberInfo.rating,
+        uid: barberInfo.uid
+      });
+
+    const { navigate } = this.props.navigation;
+    alert("booking complete");
+    navigate("Home");
+  }
+
   render() {
     const { navigation } = this.props;
+    const barberInfo = navigation.getParam("info", {
+      coords: { latitude: 33.296598, longitude: 44.2881 },
+      description: "Lorem",
+      queue: [{}, {}],
+      rating: 4
+    });
     const title = navigation.getParam("title", "Barber Name");
     const rating = navigation.getParam("rating", "0");
     const description = navigation.getParam("description", "Description Here");
@@ -51,7 +83,7 @@ export default class BarberDetails extends Component {
             <TouchableOpacity
               style={styles.buttonContainer}
               onPress={() => {
-                console.log("pressed");
+                this._book(barberInfo);
               }}
             >
               <Text style={styles.buttonText}>Book Now</Text>
