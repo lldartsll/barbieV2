@@ -16,8 +16,8 @@ export default class SignInBody extends Component {
   constructor() {
     super();
     this.state = {
-      email: "rany.ramy2009@gmail.com",
-      password: "230689abc"
+      email: "ra@gmail.com",
+      password: "1122334455"
       // email: "ra@gmail.com",
       // password: "1122334455"
     };
@@ -29,13 +29,9 @@ export default class SignInBody extends Component {
       .currentUser.getIdTokenResult()
       .then(idTokenResult => {
         if (!!idTokenResult.claims.admin) {
-          // Show admin UI.
-          //  showAdminUI();
           this.props.nav.navigate("Admin");
           console.log("admin");
         } else {
-          // Show regular user UI.
-          //  showRegularUI();
           this.props.nav.navigate("Home");
           console.log("regular");
         }

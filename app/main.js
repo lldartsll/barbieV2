@@ -7,27 +7,18 @@ import SignUpScreen from "../screens/signUp";
 import HomeScreen from "../screens/home";
 import Admin from "../screens/admin";
 import firebase from "firebase";
-
-// Initialize Firebase
-var config = {
-  apiKey: "AIzaSyDWEjet9v-6QrNjlbuH0yGZ9LmaR7rGYLA",
-  authDomain: "authtest-54626.firebaseapp.com",
-  databaseURL: "https://authtest-54626.firebaseio.com",
-  projectId: "authtest-54626",
-  storageBucket: "authtest-54626.appspot.com",
-  messagingSenderId: "694028601657"
-};
-firebase.initializeApp(config);
+import BarberDetails from "../screens/BarberDetails";
 
 const AppNavigator = createStackNavigator(
   {
     SignIn: SignInScreen,
     SignUp: SignUpScreen,
     Home: HomeScreen,
-    Admin: Admin
+    Admin: Admin,
+    Details: BarberDetails
   },
   {
-    initialRouteName: "SignIn"
+    initialRouteName: "Home"
   }
 );
 
