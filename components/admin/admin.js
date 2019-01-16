@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
 import { TouchableOpacity, FlatList } from "react-native";
 import { Card, CardItem, Text, Body, Right } from "native-base";
 import { FontAwesome } from '@expo/vector-icons'
@@ -55,6 +56,33 @@ export default class Admin extends Component {
         }
         keyExtractor={item => item.toString()}
       />
+=======
+import {
+  View,
+  Image,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  StatusBar,
+  Button,
+  AsyncStorage
+} from "react-native";
+
+export default class Admin extends Component {
+  componentDidMount() {}
+  render() {
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#fff"
+        }}
+      >
+        <Text>here is the Admin page</Text>
+      </View>
+>>>>>>> b6d5fa581458e860737de810cbcce90351a303aa
     );
   }
 }
