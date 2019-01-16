@@ -18,8 +18,6 @@ export default class SignInBody extends Component {
     this.state = {
       email: "ra@gmail.com",
       password: "1122334455"
-      // email: "ra@gmail.com",
-      // password: "1122334455"
     };
   }
 
