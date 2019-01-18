@@ -16,7 +16,7 @@ export default class Header extends Component {
         <StatusBar barStyle="light-content" />
         <Button
           title="Sign in"
-          color="#ffffff"
+          color="#000"
           onPress={() => {
             const { navigate } = this.props.nav;
             navigate("SignIn");
@@ -24,7 +24,7 @@ export default class Header extends Component {
         />
         <Button
           title="Sign up"
-          color="#ffffff"
+          color="#000"
           onPress={() => {
             const { navigate } = this.props.nav;
             navigate("SignUp");

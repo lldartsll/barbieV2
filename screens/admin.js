@@ -29,7 +29,7 @@ export default class SignInScreen extends React.Component {
         <Button
           onPress={navigation.getParam("signOut")}
           title="Sign Out"
-          color="#fff"
+          color="#000"
         />
       ),
       headerStyle: {
