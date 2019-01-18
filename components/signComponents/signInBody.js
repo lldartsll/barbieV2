@@ -98,7 +98,7 @@ export default class SignInBody extends Component {
         </View>
         <Button
           title="continue"
-          color="#000"
+          color="#fff"
           onPress={() => {
             const toFirebase = {
               email: this.state.email,
