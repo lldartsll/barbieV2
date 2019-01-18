@@ -24,9 +24,7 @@ class Map extends Component {
             description: marker.description
           })
         }
-      >
-        {console.log(marker)}
-      </Marker>
+      />
     ));
   }
   componentDidMount() {}

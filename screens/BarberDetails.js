@@ -13,7 +13,12 @@ import firebase from "firebase";
 export default class BarberDetails extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      queue: 2,
+      barberInfo: {
+        uid: "j3Vw8GADG9NHHohwOBsvSHuwF2H3"
+      }
+    };
   }
   static navigationOptions = ({ navigation }) => {
     return {
@@ -26,6 +31,25 @@ export default class BarberDetails extends Component {
     };
   };
 
+  componentWillMount() {
+    const { navigation } = this.props;
+    const barberInfo = navigation.getParam("info", {});
+    this.setState({ barberInfo: barberInfo });
+  }
+
+  componentDidMount() {
+    this._getQueue();
+  }
+
+  _getQueue() {
+    firebase
+      .database()
+      .ref("/Barbers/" + this.state.barberInfo.uid + "/queue")
+      .on("value", snapshot => {
+        let data = snapshot.val();
+        this.setState({ queue: data.length });
+      });
+  }
   _book(barberInfo) {
     barberInfo.queue.push({ name: "mukla" });
     firebase
@@ -72,6 +96,9 @@ export default class BarberDetails extends Component {
             <View style={styles.starRating}>
               <StarRating rating={JSON.stringify(rating)} />
               <Text style={styles.reviews}> 24 reviews</Text>
+              <View style={styles.test}>
+                <Text style={styles.testText}>queue: {this.state.queue}</Text>
+              </View>
             </View>
           </View>
         </View>
@@ -117,6 +144,15 @@ const styles = StyleSheet.create({
   starRating: {
     flexDirection: "row",
     backgroundColor: "#2A2E43"
+  },
+  test: {
+    marginTop: 20,
+    width: "100%"
+  },
+  testText: {
+    fontSize: 17,
+    color: "#E11010",
+    textAlign: "center"
   },
   reviews: {
     fontSize: 16,

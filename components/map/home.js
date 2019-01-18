@@ -50,7 +50,6 @@ export default class App extends React.Component {
       .ref("/Barbers")
       .on("value", snapshot => {
         let x = snapshot.val();
-        console.log(x);
         this.setState({
           dbs: x
         });

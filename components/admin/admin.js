@@ -27,6 +27,8 @@ export default class Admin extends Component {
       .ref("/Barbers/" + id + "/queue")
       .on("value", snapshot => {
         let data = snapshot.val();
+        console.log(data);
+
         this.populateCards(data);
       });
   }
