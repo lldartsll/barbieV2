@@ -11,6 +11,7 @@ import {
   AsyncStorage
 } from "react-native";
 import firebase from "firebase";
+import { StackActions, NavigationActions } from "react-navigation";
 
 export default class SignInBody extends Component {
   constructor() {
@@ -30,7 +31,7 @@ export default class SignInBody extends Component {
           this.props.nav.navigate("Admin");
           console.log("admin");
         } else {
-          this.props.nav.navigate("Home");
+          this._navigateToNewStack();
           console.log("regular");
         }
       })
@@ -49,6 +50,13 @@ export default class SignInBody extends Component {
         console.log("not signed");
       }
     });
+  }
+  _navigateToNewStack() {
+    const resetAction = StackActions.reset({
+      index: 0,
+      actions: [NavigationActions.navigate({ routeName: "Home" })]
+    });
+    this.props.nav.dispatch(resetAction);
   }
 
   componentDidMount() {
