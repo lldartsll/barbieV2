@@ -125,6 +125,7 @@ export default class SignInBody extends Component {
             placeholder="password"
             style={styles.textBox}
             value={this.state.password}
+            secureTextEntry
             onChange={event => {
               this.setState({
                 password: event.nativeEvent.text

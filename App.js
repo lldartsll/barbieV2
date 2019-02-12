@@ -59,7 +59,7 @@ export default class App extends React.Component {
   };
 
   componentDidMount() {
-    this._retrieveData();
+    // this._retrieveData();
   }
   render() {
     if (this.state.showRealApp) {
