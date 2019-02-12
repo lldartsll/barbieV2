@@ -10,7 +10,6 @@ import {
   TextInput
 } from "react-native";
 import { StackActions, NavigationActions } from "react-navigation";
-
 import firebase from "firebase";
 
 export default class SignInBody extends Component {
@@ -29,25 +28,13 @@ export default class SignInBody extends Component {
       .currentUser.getIdTokenResult()
       .then(idTokenResult => {
         if (!!idTokenResult.claims.admin) {
-          console.log("admin");
         } else {
           this._navigateToNewStack();
-          console.log("regular");
         }
       })
       .catch(error => {
         console.log(error);
       });
-  }
-  determineUserLoggedIn() {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        console.log("logged in");
-        this.determineUserType();
-      } else {
-        console.log("not signed");
-      }
-    });
   }
   _navigateToNewStack() {
     const resetAction = StackActions.reset({
@@ -55,6 +42,16 @@ export default class SignInBody extends Component {
       actions: [NavigationActions.navigate({ routeName: "Home" })]
     });
     this.props.nav.dispatch(resetAction);
+  }
+  determineUserLoggedIn() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        //user is signed so determine its type
+        this.determineUserType();
+      } else {
+        //user is not signed
+      }
+    });
   }
   render() {
     return (
