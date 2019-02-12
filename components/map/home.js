@@ -27,8 +27,8 @@ var config1 = {
 };
 firebase.initializeApp(config1);
 const deltas = {
-  latitudeDelta: 20,
-  longitudeDelta: 20
+  latitudeDelta: 0.1,
+  longitudeDelta: 0.1
 };
 
 export default class App extends React.Component {
