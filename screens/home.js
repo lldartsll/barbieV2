@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import Home from "../components/map/home";
 import firebase from "firebase";
+import { StackActions, NavigationActions } from "react-navigation";
 
 export default class SignInScreen extends React.Component {
   constructor() {
@@ -45,7 +46,7 @@ export default class SignInScreen extends React.Component {
       .signOut()
       .then(
         () => {
-          navigate("SignIn");
+          this._navigateToNewStack();
           console.log("signed out");
         },
         reson => {
@@ -53,6 +54,13 @@ export default class SignInScreen extends React.Component {
         }
       );
   };
+  _navigateToNewStack() {
+    const resetAction = StackActions.reset({
+      index: 0,
+      actions: [NavigationActions.navigate({ routeName: "SignIn" })]
+    });
+    this.props.navigation.dispatch(resetAction);
+  }
   componentDidMount() {
     this.props.navigation.setParams({ signOut: this._signOut });
   }
