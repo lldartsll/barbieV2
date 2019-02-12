@@ -9,6 +9,7 @@ import {
   Button,
   TextInput
 } from "react-native";
+import { StackActions, NavigationActions } from "react-navigation";
 
 import firebase from "firebase";
 
@@ -28,13 +29,9 @@ export default class SignInBody extends Component {
       .currentUser.getIdTokenResult()
       .then(idTokenResult => {
         if (!!idTokenResult.claims.admin) {
-          // Show admin UI.
-          //  showAdminUI();
           console.log("admin");
         } else {
-          // Show regular user UI.
-          //  showRegularUI();
-          this.props.nav.navigate("Home");
+          this._navigateToNewStack();
           console.log("regular");
         }
       })
@@ -45,14 +42,19 @@ export default class SignInBody extends Component {
   determineUserLoggedIn() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        // User is signed in.
         console.log("logged in");
         this.determineUserType();
       } else {
-        // No user is signed in.
         console.log("not signed");
       }
     });
+  }
+  _navigateToNewStack() {
+    const resetAction = StackActions.reset({
+      index: 0,
+      actions: [NavigationActions.navigate({ routeName: "Home" })]
+    });
+    this.props.nav.dispatch(resetAction);
   }
   render() {
     return (
@@ -143,8 +145,6 @@ export default class SignInBody extends Component {
               phoneNumber: this.state.phoneNumber,
               password: this.state.password
             };
-            //TODO: send this to firebase
-            console.log(`${toFirebase}`);
             firebase
               .auth()
               .createUserWithEmailAndPassword(
@@ -152,7 +152,6 @@ export default class SignInBody extends Component {
                 toFirebase.password
               )
               .then(cred => {
-                // console.log(cred.user.uid);
                 this.determineUserLoggedIn();
               })
               .catch(err => {
