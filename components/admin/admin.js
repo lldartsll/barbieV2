@@ -10,7 +10,7 @@ export default class Admin extends Component {
     this.state = {
       id: "",
       text: "",
-      users: ["its", "me"],
+      users: ["Farah", "Mustafa"],
       dummy: ""
     };
   }
