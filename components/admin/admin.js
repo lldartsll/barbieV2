@@ -1,3 +1,6 @@
+/*
+  admin components where the barber can view its specific queue and mark entries as finished
+ */
 import React, { Component } from "react";
 import { TouchableOpacity, FlatList, Button } from "react-native";
 import { Card, CardItem, Text, Body, Right, View } from "native-base";

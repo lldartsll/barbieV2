@@ -1,3 +1,6 @@
+/*
+  mapview component to load the map and the markers
+ */
 import React, { Component } from "react";
 import { View, Text, Button } from "react-native";
 import { MapView } from "expo";

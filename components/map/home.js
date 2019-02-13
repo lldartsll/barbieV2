@@ -1,3 +1,6 @@
+/*
+  map container component thet gets the user current location and the location of all barbers in the databases
+ */
 import React, { Component } from "react";
 import {
   View,
@@ -45,6 +48,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
+    //get the list of barbers
     firebase
       .database()
       .ref("/Barbers")
@@ -57,6 +61,7 @@ export default class App extends React.Component {
       });
   }
   formatFirebaseData(data) {
+    //format the data of markers into an array
     let markersArray = [];
     for (x in data) {
       markersArray.push(data[x]);
@@ -66,6 +71,7 @@ export default class App extends React.Component {
     });
   }
 
+  //get user location
   getLocationAsync = async () => {
     let { status } = await Permissions.askAsync(Permissions.LOCATION);
     if (status !== "granted") {
