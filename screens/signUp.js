@@ -1,3 +1,6 @@
+/*
+  sign up screen
+ */
 import React, { Component } from "react";
 import {
   View,

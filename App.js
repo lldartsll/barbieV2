@@ -1,3 +1,7 @@
+/*
+  this is the app entry point file
+ */
+
 import React from "react";
 import { StyleSheet, View, StatusBar, AsyncStorage } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
@@ -10,6 +14,7 @@ const styles = StyleSheet.create({
   }
 });
 
+//intro slider slides
 const slides = [
   {
     key: "somethun",
@@ -62,6 +67,7 @@ export default class App extends React.Component {
     this._retrieveData();
   }
   render() {
+    //depending on the state eather intro-slider shows or the app
     if (this.state.showRealApp) {
       return <Main />;
     } else {

@@ -43,11 +43,12 @@ export default class Admin extends Component {
   componentDidUpdate() {}
 
   remove = i => {
-    this.setState(prevState => {
-      let users = prevState.users.slice();
-      users.splice(i, 1);
-      return { users };
-    });
+    // let users = this.state.users;
+    // users.splice(i, 1);
+    // this.setState({
+    //   users: users
+    // });
+    console.log(i);
   };
 
   render() {

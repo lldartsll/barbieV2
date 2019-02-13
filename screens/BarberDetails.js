@@ -1,3 +1,6 @@
+/*
+  barber detailes screen
+ */
 import React, { Component } from "react";
 import {
   StyleSheet,
@@ -41,6 +44,7 @@ export default class BarberDetails extends Component {
     this._getQueue();
   }
 
+  //request queue for barber
   _getQueue() {
     firebase
       .database()
@@ -50,6 +54,7 @@ export default class BarberDetails extends Component {
         this.setState({ queue: data.length });
       });
   }
+  // add one entry to the queue
   _book(barberInfo) {
     barberInfo.queue.push({ name: "mukla" });
     firebase

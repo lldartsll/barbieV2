@@ -1,3 +1,6 @@
+/*
+  this is the app home screen where home component and mapview reside
+ */
 import React, { Component } from "react";
 import {
   View,
@@ -21,6 +24,7 @@ export default class SignInScreen extends React.Component {
       count: 0
     };
   }
+  //costumization of navigation components
   static navigationOptions = ({ navigation }) => {
     return {
       headerTitle: (
@@ -39,6 +43,7 @@ export default class SignInScreen extends React.Component {
     };
   };
 
+  //when sign out BTN is pressed
   _signOut = () => {
     const { navigate } = this.props.navigation;
     firebase
@@ -54,6 +59,7 @@ export default class SignInScreen extends React.Component {
         }
       );
   };
+  //used to clear and navigate to signin screen
   _navigateToNewStack() {
     const resetAction = StackActions.reset({
       index: 0,
