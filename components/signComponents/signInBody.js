@@ -1,3 +1,6 @@
+/*
+  sign in component
+ */
 import React, { Component } from "react";
 import {
   View,
@@ -22,6 +25,7 @@ export default class SignInBody extends Component {
     };
   }
 
+  //determines if the user is admin or not and navigate to the appropriete screen
   determineUserType() {
     firebase
       .auth()

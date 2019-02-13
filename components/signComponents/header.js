@@ -1,3 +1,6 @@
+/*
+  app header component
+ */
 import React, { Component } from "react";
 import {
   View,
