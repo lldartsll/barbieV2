@@ -1,3 +1,6 @@
+/*
+  main app screen screen
+ */
 import React, { Component } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Constants } from "expo";
